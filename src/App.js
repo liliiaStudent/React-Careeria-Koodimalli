@@ -3,6 +3,8 @@ import './App.css'
 import Laskuri from './Laskuri'
 import Viesti from './viesti'
 import Posts from './Posts'
+import CustomerList from './CustomerList'
+import Message from './Message'
 
 
 
@@ -11,6 +13,12 @@ const App = () => {
 
 const[showLaskuri, setshowLaskuri] = useState(false)
 
+//Statet messagen näyttämistä varten
+const [showMessage, setShowMessage] = useState(false)
+const [message, setMessage] = useState('')
+const [isPositive, setIsPositive] = useState(false)
+
+
 const huomio = () => {
   alert ("Huomio!")
 }
@@ -18,9 +26,14 @@ const huomio = () => {
   return (
     <div className="App">
       <h1>Hello from React!</h1>
+      
+
+     {showMessage && <Message  message={message} isPositive={isPositive} /> }
+
+      <CustomerList setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}/>  
 
       <Posts/>
-          
+      
 
       {showLaskuri && <Laskuri huomio={huomio} />}
 
